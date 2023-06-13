@@ -26,6 +26,7 @@ import LoginBg from "./LoginBg"
 import { createStorageSignal } from "@solid-primitives/storage"
 import { getSetting } from "~/store"
 import { SSOLogin } from "./SSOLogin"
+import LoginBgImg from "~/pages/login/LoginBgImg"
 
 const Login = () => {
   const logos = getSetting("logo").split("\n")
@@ -81,7 +82,19 @@ const Login = () => {
   const [needOpt, setNeedOpt] = createSignal(false)
 
   return (
-    <Center zIndex="1" w="$full" h="100vh">
+    <Center
+      zIndex="1"
+      w="$full"
+      h="100vh"
+      css={
+        {
+          // background: "url(https://img.neoniou.com/pixiv/82528811_p0.jpg)",
+          // backgroundRepeat: "no-repeat",
+          // backgroundSize: "cover",
+          // backgroundPosition: "center 0",
+        }
+      }
+    >
       <VStack
         bgColor={bgColor()}
         rounded="$xl"
@@ -90,6 +103,11 @@ const Login = () => {
           "@initial": "90%",
           "@sm": "364px",
         }}
+        css={
+          {
+            // background: "rgb(254, 254, 254, 0.8)",
+          }
+        }
         spacing="$4"
       >
         <Flex alignItems="center" justifyContent="space-around">
@@ -149,9 +167,6 @@ const Login = () => {
             >
               {t("login.remember")}
             </Checkbox>
-            <Text as="a" target="_blank" href={t("login.forget_url")}>
-              {t("login.forget")}
-            </Text>
           </Flex>
         </Show>
         <HStack w="$full" spacing="$2">
@@ -173,19 +188,6 @@ const Login = () => {
             {t("login.login")}
           </Button>
         </HStack>
-        <Button
-          w="$full"
-          colorScheme="accent"
-          onClick={() => {
-            changeToken()
-            to(
-              decodeURIComponent(searchParams.redirect || base_path || "/"),
-              true
-            )
-          }}
-        >
-          {t("login.use_guest")}
-        </Button>
         <Flex
           mt="$2"
           justifyContent="space-evenly"

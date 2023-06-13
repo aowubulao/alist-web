@@ -34,7 +34,6 @@ export const side_menu_items: SideMenuItem[] = [
     title: "manage.sidemenu.profile",
     icon: BsFingerprint,
     to: "/@manage",
-    role: UserRole.GUEST,
     component: lazy(() => import("./users/Profile")),
   },
   {
@@ -145,14 +144,12 @@ export const side_menu_items: SideMenuItem[] = [
     title: "manage.sidemenu.about",
     icon: BsFront,
     to: "/@manage/about",
-    role: UserRole.GUEST,
     component: lazy(() => import("./About")),
   },
   {
     title: "manage.sidemenu.docs",
     icon: FaSolidBook,
     to: "https://alist.nn.ci",
-    role: UserRole.GUEST,
     external: true,
   },
   {
